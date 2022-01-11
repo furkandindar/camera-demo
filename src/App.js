@@ -25,7 +25,7 @@ function App() {
           height: window.innerHeight,
         });
       }
-      
+
       window.addEventListener("resize", handleResize);
       handleResize();
       return () => window.removeEventListener("resize", handleResize);
@@ -46,14 +46,14 @@ function App() {
       for(const landmarks of results.multiFaceLandmarks){
         connect(canvasCtx, landmarks, Facemesh.FACEMESH_TESSELATION,
           {color: '#C0C0C070', lineWidth: 1});
-          connect(canvasCtx, landmarks, Facemesh.FACEMESH_RIGHT_EYE, {color: 'blue'});
-          connect(canvasCtx, landmarks, Facemesh.FACEMESH_RIGHT_EYEBROW, {color: '#FF3030'});
-          connect(canvasCtx, landmarks, Facemesh.FACEMESH_RIGHT_IRIS, {color: '#FF3030'});
-          connect(canvasCtx, landmarks, Facemesh.FACEMESH_LEFT_EYE, {color: '#30FF30'});
-          connect(canvasCtx, landmarks, Facemesh.FACEMESH_LEFT_EYEBROW, {color: '#30FF30'});
-          connect(canvasCtx, landmarks, Facemesh.FACEMESH_LEFT_IRIS, {color: '#30FF30'});
-          connect(canvasCtx, landmarks, Facemesh.FACEMESH_FACE_OVAL, {color: '#E0E0E0'});
-          connect(canvasCtx, landmarks, Facemesh.FACEMESH_LIPS, {color: '#E0E0E0'});
+          // connect(canvasCtx, landmarks, Facemesh.FACEMESH_RIGHT_EYE, {color: 'blue'});
+          // connect(canvasCtx, landmarks, Facemesh.FACEMESH_RIGHT_EYEBROW, {color: '#FF3030'});
+          // connect(canvasCtx, landmarks, Facemesh.FACEMESH_RIGHT_IRIS, {color: '#FF3030'});
+          // connect(canvasCtx, landmarks, Facemesh.FACEMESH_LEFT_EYE, {color: '#30FF30'});
+          // connect(canvasCtx, landmarks, Facemesh.FACEMESH_LEFT_EYEBROW, {color: '#30FF30'});
+          // connect(canvasCtx, landmarks, Facemesh.FACEMESH_LEFT_IRIS, {color: '#30FF30'});
+          // connect(canvasCtx, landmarks, Facemesh.FACEMESH_FACE_OVAL, {color: '#E0E0E0'});
+          // connect(canvasCtx, landmarks, Facemesh.FACEMESH_LIPS, {color: '#E0E0E0'});
       }
     }
     //console.log(webcamRef.current.video.clientWidth);
@@ -62,7 +62,7 @@ function App() {
     clientRatio = clientWidth / clientHeight;
   }
 
-  console.log(clientWidth);
+  // console.log(clientWidth);
 
   useEffect(() => {
 
@@ -98,7 +98,7 @@ function App() {
   clientHeight = 480;
 
   clientRatio = clientWidth / clientHeight;
-  console.log(size);
+  // console.log(size);
   // const cameraRatio = results.image.width/results.image.height;
   //   let drawnWidth, drawnHeight;
   //   if (canvasElement.width > results.image.width) {
@@ -129,18 +129,29 @@ function App() {
   //   size.height = 480;
   // }
   //console.log(isLandscape);
-  
+
   // var h = clientHeight;
   // var w = clientHeight * clientRatio;
   var w = size.width;
-  var h = w / clientRatio;
+  // var h = w / clientRatio;
+  var h = size.height;
+  // var w = h * clientRatio;
+  w = h * clientRatio
+  // if(w > 640){
+  //     h = clientHeight
+  //     w = h * clientRatio
+  // } else {
+  //   w = 640
+  //   h = w / clientRatio
+  // }
+
 
 
 
   return (
     <div>
       <Webcam id='myVideo' className='video-container' ref={webcamRef} mirrored={true}></Webcam>
-      <canvas width={w} height={h} style={{height:"100%", width:"100%", display:"block", margin:0,padding:0}} ref={canvasRef}></canvas>
+      <canvas width={w} height={h} id='mainCanvas' ref={canvasRef}></canvas>
       {/* <Camera ref={webcamRef}/> */}
     </div>
   );
