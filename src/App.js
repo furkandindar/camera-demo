@@ -4,6 +4,8 @@ import * as Facemesh from "@mediapipe/face_mesh";
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
 import {useRef, useEffect, useState, createRef} from "react";
+import Grid from '@mui/material/Grid';
+
 
 
 function App() {
@@ -57,9 +59,6 @@ function App() {
       }
     }
     //console.log(webcamRef.current.video.clientWidth);
-    clientWidth = webcamRef.current.video.clientWidth;
-    clientHeight = webcamRef.current.video.clientHeight;
-    clientRatio = clientWidth / clientHeight;
   }
 
   // console.log(clientWidth);
@@ -100,7 +99,7 @@ function App() {
   var w = size.width;
   var h = size.height;
   w = h * clientRatio;
-  console.log(w);
+  console.log(webcamRef);
 
 
 
