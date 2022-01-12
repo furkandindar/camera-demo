@@ -4,7 +4,7 @@ import * as Facemesh from "@mediapipe/face_mesh";
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
 import {useRef, useEffect, useState, createRef} from "react";
-import Camera from './components/Camera';
+
 
 function App() {
   const webcamRef = useRef(null);
@@ -96,54 +96,11 @@ function App() {
   const size = useWindowSize();
   clientWidth = 640;
   clientHeight = 480;
-
   clientRatio = clientWidth / clientHeight;
-  // console.log(size);
-  // const cameraRatio = results.image.width/results.image.height;
-  //   let drawnWidth, drawnHeight;
-  //   if (canvasElement.width > results.image.width) {
-  //     drawnWidth = canvasElement.width;
-  //     drawnHeight = canvasElement.width / cameraRatio;
-  //     console.log("state 1");
-  //   }else{
-  //     drawnHeight = canvasElement.height;
-  //     drawnWidth = canvasElement.height * cameraRatio;
-  //     console.log("state 2");
-  //   }
-
-  const isLandscape = size.height <= size.width;
-
-  // var v = document.getElementById("myVideo");
-  //   v.addEventListener( "loadedmetadata", function (e) {
-  //       var width = this.videoWidth,
-  //           height = this.videoHeight;
-
-  //           console.log(width);
-  //           console.log(height);
-  //   }, false );
-  // const ratio = isLandscape ? (size.width / size.height) : (size.height / size.width);
-  // console.log(ratio);
-  // if(isLandscape){
-  //   size.width = 640;
-  // }else{
-  //   size.height = 480;
-  // }
-  //console.log(isLandscape);
-
-  // var h = clientHeight;
-  // var w = clientHeight * clientRatio;
   var w = size.width;
-  // var h = w / clientRatio;
   var h = size.height;
-  // var w = h * clientRatio;
-  w = h * clientRatio
-  // if(w > 640){
-  //     h = clientHeight
-  //     w = h * clientRatio
-  // } else {
-  //   w = 640
-  //   h = w / clientRatio
-  // }
+  w = h * clientRatio;
+  console.log(w);
 
 
 
@@ -152,7 +109,6 @@ function App() {
     <div>
       <Webcam id='myVideo' className='video-container' ref={webcamRef} mirrored={true}></Webcam>
       <canvas width={w} height={h} id='mainCanvas' ref={canvasRef}></canvas>
-      {/* <Camera ref={webcamRef}/> */}
     </div>
   );
 }
